@@ -1,8 +1,7 @@
-package com.crio.xcommerce.contract.entites;
-
-import com.crio.xcommerce.contract.enums.AmazonTransactionStatus;
+package com.crio.xcommerce.entites;
 
 import java.time.LocalDate;
+import com.crio.xcommerce.enums.AmazonTransactionStatus;
 
 public class AmazonData {
     private final String transactionId;
@@ -56,7 +55,7 @@ public class AmazonData {
 
         public AmazonData build(){
             return new AmazonData(this);
-        }
+        }  
     }
     public String getTransactionId() {
         return transactionId;
@@ -83,4 +82,3 @@ public class AmazonData {
                 + "]";
     }
 }
-

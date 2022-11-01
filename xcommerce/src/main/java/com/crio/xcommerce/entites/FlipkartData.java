@@ -1,8 +1,7 @@
-package com.crio.xcommerce.contract.entites;
-
-import com.crio.xcommerce.contract.enums.FlipkartTransactionStatus;
+package com.crio.xcommerce.entites;
 
 import java.time.LocalDate;
+import com.crio.xcommerce.enums.FlipkartTransactionStatus;
 
 public class FlipkartData {
     private final String transactionId;
@@ -56,7 +55,7 @@ public class FlipkartData {
 
         public FlipkartData build(){
             return new FlipkartData(this);
-        }
+        }  
     }
     public String getTransactionId() {
         return transactionId;
@@ -84,4 +83,3 @@ public class FlipkartData {
     }
 
 }
-

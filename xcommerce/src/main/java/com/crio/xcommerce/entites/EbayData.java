@@ -1,14 +1,14 @@
-package com.crio.xcommerce.contract.entites;
-
-import com.crio.xcommerce.contract.enums.EbayTransactionStatus;
+package com.crio.xcommerce.entites;
 
 import java.time.LocalDate;
+import com.crio.xcommerce.enums.EbayTransactionStatus;
 
 public class EbayData {
+
     private final String transactionId;
     private final String username;
     private final EbayTransactionStatus transactionStatus;
-    private final LocalDate transactionDate;
+    private final LocalDate transactionDate;    
     private final double amount;
 
     private EbayData(Builder builder){
@@ -48,7 +48,7 @@ public class EbayData {
 
         public EbayData build(){
             return new EbayData(this);
-        }
+        }          
     }
     public String getTransactionId() {
         return transactionId;
@@ -77,5 +77,3 @@ public class EbayData {
                 + ", username=" + username + "]";
     }
 }
-
-

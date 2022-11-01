@@ -1,12 +1,4 @@
-package com.crio.xcommerce.contract;
-
-import com.crio.xcommerce.contract.entites.AmazonData;
-import com.crio.xcommerce.contract.entites.EbayData;
-import com.crio.xcommerce.contract.entites.FlipkartData;
-import com.crio.xcommerce.contract.enums.AmazonTransactionStatus;
-import com.crio.xcommerce.contract.enums.EbayTransactionStatus;
-import com.crio.xcommerce.contract.enums.FlipkartTransactionStatus;
-import com.crio.xcommerce.contract.insights.SaleInsights;
+package com.crio.xcommerce.sale.insights;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +16,12 @@ import com.crio.xcommerce.contract.insights.SaleAggregate;
 import com.crio.xcommerce.contract.insights.SaleAggregateByMonth;
 import com.crio.xcommerce.contract.insights.SaleInsights;
 import com.crio.xcommerce.contract.resolver.DataProvider;
+import com.crio.xcommerce.entites.AmazonData;
+import com.crio.xcommerce.entites.EbayData;
+import com.crio.xcommerce.entites.FlipkartData;
+import com.crio.xcommerce.enums.AmazonTransactionStatus;
+import com.crio.xcommerce.enums.EbayTransactionStatus;
+import com.crio.xcommerce.enums.FlipkartTransactionStatus;
 
 
 public class SaleInsightsImpl implements SaleInsights {
@@ -165,9 +163,9 @@ public class SaleInsightsImpl implements SaleInsights {
         Map<Object, Double> aggregateByMonthsMap = lFlipkartData.stream()
                 .filter(fd -> fd.getTransactionDate().getYear() == year
                         && (fd.getTransactionStatus().equals(FlipkartTransactionStatus.COMPLETE)
-                        || fd.getTransactionStatus().equals(FlipkartTransactionStatus.PAID)
-                        || fd.getTransactionStatus()
-                        .equals(FlipkartTransactionStatus.SHIPPED)))
+                                || fd.getTransactionStatus().equals(FlipkartTransactionStatus.PAID)
+                                || fd.getTransactionStatus()
+                                        .equals(FlipkartTransactionStatus.SHIPPED)))
                 .collect(Collectors.groupingBy(fd -> fd.getTransactionDate().getMonthValue(),
                         Collectors.summingDouble(FlipkartData::getAmount)));
         List<SaleAggregateByMonth> aggregateByMonths = new ArrayList<>();
@@ -214,16 +212,16 @@ public class SaleInsightsImpl implements SaleInsights {
         return new SaleAggregate(totalSales, aggregateByMonths);
     }
 
-     //Only For Testing Purpose
-//     public static void main(String[] args) {
-//         SaleInsightsImpl saleInsightsImpl = new SaleInsightsImpl();
-//         try {
-//             saleInsightsImpl.getSaleInsightsAmazon(
-//                     new File("xcommerce/src/test/resources/assessments/invalid_data.csv"), 2020);
-//         } catch (IOException | AnalyticsException e) {
-//             // TODO Auto-generated catch block
-//             e.printStackTrace();
-//         }
-//     }
+    // //Only For Testing Purpose
+    // public static void main(String[] args) {
+    //     SaleInsightsImpl saleInsightsImpl = new SaleInsightsImpl();
+    //     try {
+    //         saleInsightsImpl.getSaleInsightsAmazon(
+    //                 new File("xcommerce/src/test/resources/assessments/invalid_data.csv"), 2020);
+    //     } catch (IOException | AnalyticsException e) {
+    //         // TODO Auto-generated catch block
+    //         e.printStackTrace();
+    //     }
+    // }
 
 }

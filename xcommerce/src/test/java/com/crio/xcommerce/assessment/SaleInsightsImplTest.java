@@ -3,12 +3,13 @@ package com.crio.xcommerce.assessment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.crio.xcommerce.contract.SaleInsightsImpl;
+
 import com.crio.xcommerce.contract.exceptions.AnalyticsException;
 import com.crio.xcommerce.contract.insights.SaleAggregate;
 import com.crio.xcommerce.contract.insights.SaleAggregateByMonth;
 import com.crio.xcommerce.contract.insights.SaleInsights;
 import com.crio.xcommerce.contract.resolver.DataProvider;
+import com.crio.xcommerce.sale.insights.SaleInsightsImpl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
